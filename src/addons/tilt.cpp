@@ -3,6 +3,7 @@
 #include "storagemanager.h"
 #include "helper.h"
 #include "config.pb.h"
+#include "gamepad.h"
 
 bool TiltInput::available() {
     const TiltOptions& options = Storage::getInstance().getAddonOptions().tiltOptions;
@@ -109,6 +110,7 @@ void TiltInput::preprocess()
 	uint8_t gamepadState = gamepad->state.dpad;
 
 	gamepad->state.dpad = gamepadState;
+	mapButtonB1  = new GamepadButtonMapping(GAMEPAD_MASK_B1);
 }
 
 void TiltInput::process()
