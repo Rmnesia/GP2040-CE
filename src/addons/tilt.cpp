@@ -3,7 +3,7 @@
 #include "storagemanager.h"
 #include "helper.h"
 #include "config.pb.h"
-#include "gamepad.h"
+#include "GamepadState.h"
 
 bool TiltInput::available() {
     const TiltOptions& options = Storage::getInstance().getAddonOptions().tiltOptions;
@@ -110,7 +110,6 @@ void TiltInput::preprocess()
 	uint8_t gamepadState = gamepad->state.dpad;
 
 	gamepad->state.dpad = gamepadState;
-	mapButtonB1  = new GamepadButtonMapping(GAMEPAD_MASK_B1);
 }
 
 void TiltInput::process()
@@ -165,7 +164,7 @@ void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) 
 
             gamepad->state.rx = dpadToAnalogX(dpad2) + (midValue - dpadToAnalogX(dpad2)) * scaledTilt2FactorRightX;
             gamepad->state.ry = dpadToAnalogY(dpad2) + (midValue - dpadToAnalogY(dpad2)) * scaledTilt2FactorRightY;
-					  gamepad->state.buttons = mapButtonB1->buttonMask;
+					  gamepad->state.buttons |= GAMEPAD_MASK_B1;
         } else {
             gamepad->state.lx = dpadToAnalogX(dpad1);
             gamepad->state.ly = dpadToAnalogY(dpad1);
