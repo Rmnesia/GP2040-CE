@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        GP2040_BOARDCONFIG: [Pico, PicoW]
+        GP2040_BOARDCONFIG: [Pico]
 
     steps:
     #Global Setup
