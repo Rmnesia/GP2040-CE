@@ -175,8 +175,8 @@ void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) 
 					  gamepad->state.buttons |= (1U << 1);
 					  return;
         }
+					gamepad->state.lx = dpadToAnalogX(dpad1) + (midValue - dpadToAnalogX(dpad1)) * scaledTilt2FactorLeftY;
 					gamepad->state.ly = dpadToAnalogY(dpad1) + (midValue - dpadToAnalogY(dpad1)) * scaledTilt2FactorLeftY;
-					  gamepad->state.lx = dpadToAnalogX(dpad1);
             gamepad->state.rx = dpadToAnalogX(dpad2);
             gamepad->state.ry = dpadToAnalogY(dpad2);
 					return;
