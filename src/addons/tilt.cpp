@@ -54,6 +54,11 @@ void TiltInput::setup() {
 		}
 	}
 
+	// WARNING
+			gpio_init((uint8_t)21);             // Initialize pin
+			gpio_set_dir((uint8_t)21, GPIO_IN); // Set as INPUT
+			gpio_pull_up((uint8_t)21);          // Set as PULLUP
+
 	tiltLeftState = 0;
 	tiltRightState = 0;
 
