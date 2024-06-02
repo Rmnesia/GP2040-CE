@@ -135,8 +135,9 @@ void TiltInput::process()
 void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) {
 	bool pinTilt1Pressed = (pinTilt1 != (uint8_t)-1) ? !gpio_get(pinTilt1) : false;
 	bool pinTilt2Pressed = (pinTilt2 != (uint8_t)-1) ? !gpio_get(pinTilt2) : false;
-	// ADD 21 Pin, WARNING
+	// ADD 21 27 Pin, WARNING
   bool pin21Pressed    = !gpio_get((uint8_t)21);
+	bool pin21Pressed    = !gpio_get((uint8_t)27);
 	// Scales input from 0-100% of maximum input
 	double scaledTilt1FactorLeftX  = 1.0 - (tilt1FactorLeftX  / 100.0);
 	double scaledTilt1FactorLeftY  = 1.0 - (tilt1FactorLeftY  / 100.0);
@@ -151,6 +152,16 @@ void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) 
 	if ( DriverManager::getInstance().getDriver() != nullptr ) {
 		midValue = DriverManager::getInstance().getDriver()->GetJoystickMidValue();
 	}
+		// WARNING
+		if (pin27Pressed) {
+					gamepad->state.lx = dpadToAnalogX(dpad1) + (midValue - dpadToAnalogX(dpad1)) * 0.3;
+					gamepad->state.ly = dpadToAnalogY(dpad1) + (midValue - dpadToAnalogY(dpad1)) * 0.3;
+          gamepad->state.rx = dpadToAnalogX(dpad2);
+          gamepad->state.ry = dpadToAnalogY(dpad2);
+					return;
+		}
+		// WARNING END
+	
 		// WARNING
     if (pinTilt1Pressed && pinTilt2Pressed && pin21Pressed) {
         // inputs act as dpad
