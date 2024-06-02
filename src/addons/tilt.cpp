@@ -137,7 +137,7 @@ void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) 
 	bool pinTilt2Pressed = (pinTilt2 != (uint8_t)-1) ? !gpio_get(pinTilt2) : false;
 	// ADD 21 27 Pin, WARNING
   bool pin21Pressed    = !gpio_get((uint8_t)21);
-	bool pin21Pressed    = !gpio_get((uint8_t)27);
+	bool pin27Pressed    = !gpio_get((uint8_t)27);
 	// Scales input from 0-100% of maximum input
 	double scaledTilt1FactorLeftX  = 1.0 - (tilt1FactorLeftX  / 100.0);
 	double scaledTilt1FactorLeftY  = 1.0 - (tilt1FactorLeftY  / 100.0);
