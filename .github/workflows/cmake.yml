@@ -32,9 +32,14 @@ jobs:
       with:
         fetch-depth: 0
         fetch-tags: true
-
+    
     - name: Setup SDK pipeline
       uses: Fortinbra/RaspberryPiPicoBuild@v3
+
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install protobuf==3.20.1  # 官方最后一个支持 MakeClass 的版本
 
     - name: Download a Build Artifact
       uses: actions/download-artifact@v4.1.2
