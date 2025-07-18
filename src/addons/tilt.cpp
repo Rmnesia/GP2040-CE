@@ -147,6 +147,7 @@ void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) 
 		midValue = DriverManager::getInstance().getDriver()->GetJoystickMidValue();
 	}
 		// WARNING
+<<<<<<< HEAD
 		if (pin6Pressed) {
 				if (pinTilt1Pressed) {
             gamepad->state.lx = dpadToAnalogX(dpad1);
@@ -161,6 +162,16 @@ void TiltInput::OverrideGamepad(Gamepad* gamepad, uint8_t dpad1, uint8_t dpad2) 
           gamepad->state.rx = dpadToAnalogX(dpad2);
           gamepad->state.ry = dpadToAnalogY(dpad2);
 			    gamepad->state.buttons |= (1U << 1);
+=======
+		if (pin27Pressed) {
+					gamepad->state.lx = dpadToAnalogX(dpad1) + (midValue - dpadToAnalogX(dpad1)) * 0.3;
+					gamepad->state.ly = dpadToAnalogY(dpad1) + (midValue - dpadToAnalogY(dpad1)) * 0.3;
+          gamepad->state.rx = dpadToAnalogX(dpad2);
+          gamepad->state.ry = dpadToAnalogY(dpad2);
+			if (pinTilt2Pressed) {
+					  gamepad->state.buttons |= (1U << 1);
+        }
+>>>>>>> parent of 26a3305 (add normal state without tilt)
 					return;
 		}
 		// WARNING END
