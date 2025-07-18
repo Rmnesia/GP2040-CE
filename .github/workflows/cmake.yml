@@ -52,7 +52,6 @@ jobs:
 
       - name: Setup SDK pipeline
         uses: Fortinbra/RaspberryPiPicoBuild@v7
-=======
     #Global Setup
     - name: Checkout GP2040-CE
       uses: actions/checkout@v4.1.1
@@ -68,7 +67,6 @@ jobs:
       with:
         name: fsData
         path: ${{github.workspace}}/lib/httpd/
->>>>>>> parent of 9d053e7 (Update cmake.yml to avoid MakeClass error)
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.2
