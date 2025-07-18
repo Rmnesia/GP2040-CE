@@ -34,7 +34,7 @@ jobs:
         fetch-tags: true
 
     - name: downgrade python
-      run: apt install python3.9 python3.9-dev
+      run: sudo apt install python3.9 python3.9-dev
 
     - name: Setup SDK pipeline
       uses: Fortinbra/RaspberryPiPicoBuild@v3
