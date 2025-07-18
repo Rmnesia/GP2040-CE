@@ -33,8 +33,11 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-    - name: downgrade python
-      run: sudo apt install python3.9 python3.9-dev
+    - name: Set up Python 3.9  # 明确指定 Python 版本
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.9"
+        cache: "pip"
 
     - name: Setup SDK pipeline
       uses: Fortinbra/RaspberryPiPicoBuild@v3
