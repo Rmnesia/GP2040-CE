@@ -36,11 +36,6 @@ jobs:
     - name: Setup SDK pipeline
       uses: Fortinbra/RaspberryPiPicoBuild@v3
 
-    - name: Install compatible protobuf
-      run: | 
-           pip install protobuf==3.20.3
-           pip install --no-cache-dir nanopb
-
     - name: Download a Build Artifact
       uses: actions/download-artifact@v4.1.2
       with:
