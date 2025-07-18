@@ -36,7 +36,6 @@ jobs:
         GP2040_BOARDCONFIG: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.board_config != '' && fromJSON(format('["{0}"]', github.event.inputs.board_config)) || fromJSON('["Pico", "PicoW"]') }}
 
     steps:
-<<<<<<< HEAD
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v2
         with:
